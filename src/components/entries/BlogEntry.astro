@@ -1,0 +1,42 @@
+---
+const { title, url, description, pubDate, author, image, tags } = Astro.props;
+---
+
+<article class="flex flex-col flex-1 group">
+  <a href={url} class="block overflow-hidden rounded-sm" aria-hidden="true" tabindex="-1">
+    <img
+      src={image}
+      alt=""
+      width={1200}
+      height={750}
+      loading="lazy"
+      decoding="async"
+      class="object-cover w-full aspect-[16/10] transition-transform duration-500 group-hover:scale-[1.02]"
+    />
+  </a>
+
+  <div class="mt-6 flex flex-wrap gap-x-3 gap-y-2">
+    {
+      tags.slice(0, 3).map((tag: string) => (
+        <a
+          class="inline-flex min-h-10 items-center text-[11px] sm:text-xs font-bold uppercase tracking-wide text-[var(--color-ink)] hover:text-[var(--color-accent)] transition-colors"
+          href={`/tags/${encodeURIComponent(tag)}`}
+        >
+          {tag}
+        </a>
+      ))
+    }
+  </div>
+
+  <h3 class="mt-3 font-display text-2xl sm:text-[1.65rem] leading-snug text-[var(--color-ink)] text-balance">
+    <a href={url} class="hover:opacity-80 transition-opacity">{title}</a>
+  </h3>
+
+  <p class="mt-2 text-sm text-[var(--color-ink-muted)] line-clamp-2 leading-relaxed">{description}</p>
+
+  <p class="mt-4 text-xs text-[var(--color-ink-faint)]">
+    <time datetime={pubDate}>{pubDate}</time>
+    <span class="mx-2">·</span>
+    <span>{author}</span>
+  </p>
+</article>

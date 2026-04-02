@@ -1,0 +1,183 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import BlogEntries from "@/components/entries/BlogEntry.astro";
+import Cta from "@/components/global/Cta.astro";
+import { getCollection } from "astro:content";
+import { SITE, defaultSeo } from "@/config/site";
+
+const allPosts = await getCollection("posts");
+const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
+const sortedPosts = allPosts.sort(
+  (a, b) =>
+    new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+);
+
+const services = [
+  {
+    title: "Dry cleaning",
+    body: "Solvent care for suits, dresses, coats, and delicates—inspected, finished, and bagged with care.",
+  },
+  {
+    title: "Shirt laundry",
+    body: "Pressed shirts with starch levels to match your dress code—hospitality, office, or boardroom.",
+  },
+  {
+    title: "Alterations",
+    body: "Hemming, tapering, and repairs so off-the-rack fits like it was made for you.",
+  },
+  {
+    title: "Stain treatment",
+    body: "Oil, wine, ink, and everyday spills—tell us the story; we pick the safest chemistry.",
+  },
+];
+---
+
+<BaseLayout title={defaultSeo.title} description={defaultSeo.description}>
+  <section class="relative min-h-[min(88vh,920px)] flex flex-col justify-end">
+    <div class="absolute inset-0">
+      <img
+        src={SITE.heroImage}
+        alt={SITE.heroImageAlt}
+        width={2400}
+        height={1350}
+        fetchpriority="high"
+        decoding="async"
+        class="w-full h-full object-cover"
+      />
+      <div
+        class="absolute inset-0 bg-gradient-to-t from-[var(--color-ink)]/92 via-[var(--color-ink)]/50 to-transparent"
+        aria-hidden="true"
+      />
+    </div>
+
+    <div
+      class="relative max-w-[1600px] w-full mx-auto px-5 sm:px-8 lg:px-12 xl:px-16 pb-16 sm:pb-20 lg:pb-28 pt-32"
+    >
+      <p class="text-xs font-semibold uppercase tracking-[0.25em] text-white/70">
+        {SITE.tagline}
+      </p>
+      <h1
+        class="mt-5 max-w-4xl font-display text-4xl sm:text-5xl lg:text-6xl lg:leading-[1.05] text-white text-balance"
+      >
+        Garment care with the finish your calendar expects.
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg text-white/85 leading-relaxed">
+        {SITE.name} serves working professionals and families who want reliable turnaround, clear communication, and clothes that return ready to wear—not “almost.”
+      </p>
+      <div class="mt-10 flex flex-wrap gap-4">
+        <a
+          href={SITE.phoneHref}
+          class="inline-flex items-center justify-center min-h-12 px-8 text-sm font-semibold bg-white text-[var(--color-ink)] hover:bg-white/90 rounded-sm transition-colors"
+        >
+          Schedule a drop-off
+        </a>
+        <a
+          href="/#journal"
+          class="inline-flex items-center justify-center min-h-12 px-8 text-sm font-medium text-white border border-white/40 hover:bg-white/10 rounded-sm transition-colors"
+        >
+          Read the journal
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="max-w-[1600px] mx-auto px-5 sm:px-8 lg:px-12 xl:px-16">
+    <section id="services" class="py-20 lg:py-28 scroll-mt-24 border-b border-[var(--color-border)]">
+      <div class="lg:flex lg:items-end lg:justify-between gap-12">
+        <div class="max-w-xl">
+          <h2 class="font-display text-3xl sm:text-4xl text-[var(--color-ink)]">What we do</h2>
+          <p class="mt-4 text-[var(--color-ink-muted)] leading-relaxed">
+            One counter for cleaning, finishing, and alterations—so you are not bouncing between shops.
+          </p>
+        </div>
+      </div>
+      <ul class="mt-14 grid gap-px bg-[var(--color-border)] sm:grid-cols-2 lg:grid-cols-4 border border-[var(--color-border)] rounded-sm overflow-hidden">
+        {
+          services.map((s) => (
+            <li class="bg-[var(--color-surface)] p-8 lg:p-10">
+              <h3 class="font-display text-xl text-[var(--color-ink)]">{s.title}</h3>
+              <p class="mt-3 text-sm text-[var(--color-ink-muted)] leading-relaxed">{s.body}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section
+      id="journal"
+      class="scroll-mt-24 py-12 sm:py-16 lg:py-20"
+      aria-labelledby="journal-heading"
+    >
+      <div
+        class="rounded-sm border border-[var(--color-border)] bg-[var(--color-surface-2)] p-6 sm:p-8 lg:p-12 xl:p-14 shadow-sm"
+      >
+        <div class="flex flex-col gap-8 xl:flex-row xl:justify-between xl:items-start xl:gap-12">
+          <div class="max-w-2xl shrink-0 xl:min-w-0 xl:flex-1">
+            <p class="text-xs font-bold uppercase tracking-[0.2em] text-[var(--color-accent)]">
+              Care tips
+            </p>
+            <h2
+              id="journal-heading"
+              class="mt-2 font-display text-3xl sm:text-4xl text-[var(--color-ink)]"
+            >
+              Journal
+            </h2>
+            <p class="mt-4 text-[var(--color-ink-muted)] leading-relaxed text-base sm:text-[1.05rem]">
+              Practical notes on fabrics, stains, and storage—so your pieces last between visits.
+            </p>
+          </div>
+          <nav
+            class="w-full shrink-0 xl:w-auto xl:max-w-[min(100%,44rem)] xl:pl-4"
+            aria-label="Browse article topics"
+          >
+            <ul
+              class="flex flex-wrap gap-x-3 gap-y-3 sm:gap-x-4 sm:gap-y-3 justify-start xl:justify-end"
+            >
+              {
+                tags.length > 0 ? (
+                  tags.map((tag) => (
+                    <li>
+                      <a
+                        class="inline-flex min-h-11 sm:min-h-10 items-center px-1.5 py-2 sm:px-2 font-bold uppercase tracking-wide text-[13px] sm:text-sm leading-tight text-[var(--color-ink)] hover:text-[var(--color-accent)] transition-colors rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)]"
+                        href={`/tags/${encodeURIComponent(tag)}`}
+                      >
+                        {tag}
+                      </a>
+                    </li>
+                  ))
+                ) : (
+                  <li class="text-sm text-[var(--color-ink-muted)]">
+                    Topics load from your posts.{" "}
+                    <a class="font-semibold text-[var(--color-accent)] underline" href="/tags">
+                      View all topics
+                    </a>
+                  </li>
+                )
+              }
+            </ul>
+          </nav>
+        </div>
+
+        <div class="mt-12 sm:mt-14 lg:mt-16 grid grid-cols-1 lg:grid-cols-2 gap-x-10 lg:gap-x-12 gap-y-16 sm:gap-y-20 lg:gap-y-24">
+          {
+            sortedPosts.map((post) => (
+              <BlogEntries
+                url={"/posts/" + post.id}
+                tags={post.data.tags}
+                title={post.data.title}
+                author={post.data.author}
+                image={post.data.image.url}
+                description={post.data.description}
+                pubDate={post.data.pubDate.toString().slice(0, 10)}
+              />
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <div class="pb-20 lg:pb-28">
+      <Cta />
+    </div>
+  </div>
+</BaseLayout>

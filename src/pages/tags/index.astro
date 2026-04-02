@@ -1,0 +1,38 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import BackToHome from "@/components/global/BackToHome.astro";
+import { SITE } from "@/config/site";
+
+const allPosts = await getCollection("posts");
+const tags = [...new Set(allPosts.map((post) => post.data.tags).flat())];
+const sortedTags = tags.sort((a, b) => a.localeCompare(b));
+
+const title = `Topics · ${SITE.name}`;
+const description = `Browse care tip topics from ${SITE.name}.`;
+---
+
+<BaseLayout title={title} description={description}>
+  <section class="max-w-[1600px] mx-auto px-5 sm:px-8 lg:px-12 xl:px-16 py-12 sm:py-16 lg:py-28">
+    <BackToHome href="/#journal" label="Back to home" />
+
+    <h1 class="font-display text-3xl sm:text-4xl md:text-5xl text-[var(--color-ink)] leading-tight">Topics</h1>
+    <p class="mt-4 text-[var(--color-ink-muted)] max-w-xl text-base sm:text-[1.05rem] leading-relaxed">
+      Jump to a category from the journal.
+    </p>
+    <ul class="mt-10 sm:mt-14 flex flex-wrap gap-3 sm:gap-4">
+      {
+        sortedTags.map((tag) => (
+          <li>
+            <a
+              class="inline-flex min-h-11 items-center px-5 sm:px-6 py-2.5 text-sm font-bold uppercase tracking-wide border border-[var(--color-border)] rounded-sm text-[var(--color-ink)] hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)]"
+              href={`/tags/${encodeURIComponent(tag)}`}
+            >
+              {tag}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</BaseLayout>

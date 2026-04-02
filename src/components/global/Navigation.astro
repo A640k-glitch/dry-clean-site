@@ -1,0 +1,54 @@
+---
+import { SITE } from "@/config/site";
+---
+
+<header
+  class="sticky top-0 z-50 border-b border-[var(--color-border)] bg-[var(--color-surface)]/85 backdrop-blur-md"
+>
+  <div
+    class="max-w-[1600px] mx-auto px-5 sm:px-8 lg:px-12 xl:px-16 flex items-center justify-between gap-6 py-4 lg:py-5"
+  >
+    <a
+      href="/"
+      class="font-display text-xl sm:text-2xl tracking-tight text-[var(--color-ink)] hover:opacity-80 transition-opacity"
+    >
+      {SITE.name}
+    </a>
+
+    <details class="group relative md:hidden">
+      <summary
+        class="list-none cursor-pointer p-2 -mr-2 text-[var(--color-ink)] [&::-webkit-details-marker]:hidden flex items-center justify-center"
+        aria-label="Toggle menu"
+      >
+        <span class="sr-only">Menu</span>
+        <svg class="w-6 h-6 group-open:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        <svg class="w-6 h-6 hidden group-open:block" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.75" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </summary>
+      <nav
+        class="absolute right-0 top-full mt-2 min-w-[12rem] rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] py-2 shadow-lg"
+        aria-label="Mobile"
+      >
+        <a class="block min-h-11 px-4 py-3 text-sm font-medium text-[var(--color-ink-muted)] hover:bg-[var(--color-surface-2)] active:bg-[var(--color-surface-2)]" href="/#services">Services</a>
+        <a class="block min-h-11 px-4 py-3 text-sm font-medium text-[var(--color-ink-muted)] hover:bg-[var(--color-surface-2)] active:bg-[var(--color-surface-2)]" href="/#journal">Journal</a>
+        <a class="block min-h-11 px-4 py-3 text-sm font-medium text-[var(--color-ink-muted)] hover:bg-[var(--color-surface-2)] active:bg-[var(--color-surface-2)]" href="/#visit">Visit</a>
+        <a class="block min-h-11 px-4 py-3 text-sm font-semibold text-[var(--color-accent)]" href={SITE.phoneHref}>Call</a>
+      </nav>
+    </details>
+
+    <nav class="hidden md:flex items-center gap-8 lg:gap-10" aria-label="Primary">
+      <a class="text-sm text-[var(--color-ink-muted)] hover:text-[var(--color-ink)] transition-colors" href="/#services">Services</a>
+      <a class="text-sm text-[var(--color-ink-muted)] hover:text-[var(--color-ink)] transition-colors" href="/#journal">Journal</a>
+      <a class="text-sm text-[var(--color-ink-muted)] hover:text-[var(--color-ink)] transition-colors" href="/#visit">Visit</a>
+      <a
+        href={SITE.phoneHref}
+        class="text-sm font-medium text-white bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] px-5 py-2.5 rounded-full transition-colors"
+      >
+        {SITE.phone}
+      </a>
+    </nav>
+  </div>
+</header>

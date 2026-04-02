@@ -1,0 +1,17 @@
+{
+  "name": "Fresh Press Cleaners",
+  "short_name": "F.P",
+  "description": "Dry cleaning, shirt laundry, and garment care.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fafaf8",
+  "theme_color": "#1e293b",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any"
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-sans: "Satoshi", system-ui, sans-serif;
+  --font-display: "Cabinet Grotesk", system-ui, sans-serif;
+  --font-mono: ui-monospace, monospace;
+
+  --color-surface: oklch(99.2% 0.004 95);
+  --color-surface-2: oklch(97.5% 0.006 95);
+  --color-border: oklch(90% 0.01 95);
+  --color-ink: oklch(18% 0.02 270);
+  --color-ink-muted: oklch(42% 0.02 270);
+  --color-ink-faint: oklch(58% 0.02 270);
+  --color-accent: oklch(38% 0.06 260);
+  --color-accent-hover: oklch(32% 0.07 260);
+
+  --color-base-50: oklch(98% 0.004 95);
+  --color-base-100: oklch(96% 0.006 95);
+  --color-base-200: oklch(90% 0.01 95);
+  --color-base-300: oklch(84% 0.012 95);
+  --color-base-400: oklch(72% 0.015 95);
+  --color-base-500: oklch(58% 0.02 95);
+  --color-base-600: oklch(45% 0.02 270);
+  --color-base-700: oklch(35% 0.02 270);
+  --color-base-800: oklch(26% 0.02 270);
+  --color-base-900: oklch(18% 0.02 270);
+  --color-base-950: oklch(14% 0.02 270);
+}
+
+:root {
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: oklch(90% 0.04 260);
+  color: var(--color-ink);
+}
+
+:root {
+  --astro-code-color-text: #1a1a1a;
+  --astro-code-background: #f4f4f2;
+  --astro-code-token-constant: #1a1a1a80;
+  --astro-code-token-string: #1a1a1a50;
+  --astro-code-token-comment: #1a1a1a60;
+  --astro-code-token-keyword: #1a1a1a;
+  --astro-code-token-parameter: #fff;
+  --astro-code-token-function: #1a1a1a;
+  --astro-code-token-string-expression: #1e3a5f;
+  --astro-code-token-punctuation: #fff;
+  --astro-code-token-link: #fff;
+}

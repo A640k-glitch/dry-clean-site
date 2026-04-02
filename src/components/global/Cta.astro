@@ -1,0 +1,36 @@
+---
+import { SITE } from "@/config/site";
+---
+
+<section
+  class="relative overflow-hidden rounded-sm border border-[var(--color-border)] bg-[var(--color-surface-2)]"
+  aria-labelledby="cta-heading"
+>
+  <div class="max-w-[1600px] mx-auto px-5 sm:px-8 lg:px-12 xl:px-16 py-16 lg:py-20 lg:flex lg:items-center lg:justify-between lg:gap-16">
+    <div class="max-w-xl">
+      <h2
+        id="cta-heading"
+        class="font-display text-3xl sm:text-4xl text-[var(--color-ink)] text-balance leading-tight"
+      >
+        Same-week service on most orders
+      </h2>
+      <p class="mt-4 text-[var(--color-ink-muted)] leading-relaxed">
+        Drop off before noon for the fastest path to the rack. Rush and alterations quoted at the counter.
+      </p>
+    </div>
+    <div class="mt-10 lg:mt-0 flex flex-col sm:flex-row gap-4 shrink-0">
+      <a
+        href={SITE.phoneHref}
+        class="inline-flex items-center justify-center min-h-12 px-8 text-sm font-semibold text-white bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] rounded-sm transition-colors"
+      >
+        {SITE.phone}
+      </a>
+      <a
+        href="/#visit"
+        class="inline-flex items-center justify-center min-h-12 px-8 text-sm font-medium text-[var(--color-ink)] border border-[var(--color-border)] bg-[var(--color-surface)] hover:bg-white rounded-sm transition-colors"
+      >
+        Hours &amp; address
+      </a>
+    </div>
+  </div>
+</section>
