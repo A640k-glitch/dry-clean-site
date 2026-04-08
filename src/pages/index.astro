@@ -262,77 +262,99 @@ const testimonials = [
       </div>
     </section>
 
-    <!-- Journal -->
+    <!-- The Clothesline -->
     <section
       id="journal"
       class="scroll-mt-24 py-12 sm:py-16 lg:py-20"
       aria-labelledby="journal-heading"
     >
-      <div
-        class="rounded-sm border border-[var(--color-border)] bg-[var(--color-surface-2)] p-6 sm:p-8 lg:p-12 xl:p-14 shadow-sm"
-      >
-        <div class="flex flex-col gap-8 xl:flex-row xl:justify-between xl:items-start xl:gap-12">
-          <div class="max-w-2xl shrink-0 xl:min-w-0 xl:flex-1">
-            <p class="text-xs font-bold uppercase tracking-[0.2em] text-[var(--color-accent)]">
-              Care tips
-            </p>
-            <h2
-              id="journal-heading"
-              class="mt-2 font-display text-3xl sm:text-4xl text-[var(--color-ink)]"
+      <div class="rounded-lg overflow-hidden shadow-md border border-[var(--color-accent)]/20">
+
+        <!-- Colorful header band -->
+        <div class="relative bg-[var(--color-accent)] px-6 sm:px-8 lg:px-12 xl:px-14 py-10 sm:py-12 lg:py-14 overflow-hidden">
+          <!-- Dot grid texture -->
+          <div
+            class="absolute inset-0 opacity-[0.08]"
+            style="background-image: radial-gradient(circle, white 1.5px, transparent 1.5px); background-size: 22px 22px;"
+            aria-hidden="true"
+          ></div>
+          <!-- Decorative large circle -->
+          <div
+            class="absolute -right-16 -top-16 w-72 h-72 rounded-full opacity-10"
+            style="background: radial-gradient(circle, white, transparent 70%);"
+            aria-hidden="true"
+          ></div>
+
+          <div class="relative flex flex-col gap-8 xl:flex-row xl:justify-between xl:items-start xl:gap-12">
+            <div class="max-w-2xl shrink-0 xl:min-w-0 xl:flex-1">
+              <div class="inline-flex items-center gap-2 bg-white/15 rounded-full px-3 py-1 mb-4">
+                <svg class="w-3.5 h-3.5 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"/>
+                </svg>
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-white/80">Tips from our counter</span>
+              </div>
+              <h2
+                id="journal-heading"
+                class="font-display text-4xl sm:text-5xl text-white leading-tight"
+              >
+                The Clothesline
+              </h2>
+              <p class="mt-4 text-white/80 leading-relaxed text-base sm:text-[1.05rem] max-w-lg">
+                Practical notes from 35 years behind the counter—on fabrics, stubborn stains, and keeping your wardrobe in great shape between visits.
+              </p>
+            </div>
+            <nav
+              class="w-full shrink-0 xl:w-auto xl:max-w-[min(100%,40rem)] xl:pl-4"
+              aria-label="Browse article topics"
             >
-              Journal
-            </h2>
-            <p class="mt-4 text-[var(--color-ink-muted)] leading-relaxed text-base sm:text-[1.05rem]">
-              Practical notes on fabrics, stains, and storage—so your pieces last longer between visits.
-            </p>
-          </div>
-          <nav
-            class="w-full shrink-0 xl:w-auto xl:max-w-[min(100%,44rem)] xl:pl-4"
-            aria-label="Browse article topics"
-          >
-            <ul
-              class="flex flex-wrap gap-x-3 gap-y-3 sm:gap-x-4 sm:gap-y-3 justify-start xl:justify-end"
-            >
-              {
-                tags.length > 0 ? (
-                  tags.map((tag) => (
-                    <li>
-                      <a
-                        class="inline-flex min-h-11 sm:min-h-10 items-center px-1.5 py-2 sm:px-2 font-bold uppercase tracking-wide text-[13px] sm:text-sm leading-tight text-[var(--color-ink)] hover:text-[var(--color-accent)] transition-colors rounded-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)]"
-                        href={`/tags/${encodeURIComponent(tag)}`}
-                      >
-                        {tag}
+              <p class="text-xs font-semibold uppercase tracking-wider text-white/60 mb-3 xl:text-right">Browse by topic</p>
+              <ul
+                class="flex flex-wrap gap-2 justify-start xl:justify-end"
+              >
+                {
+                  tags.length > 0 ? (
+                    tags.map((tag) => (
+                      <li>
+                        <a
+                          class="inline-flex min-h-9 items-center px-4 py-1.5 font-bold uppercase tracking-wide text-xs leading-tight text-white border border-white/30 hover:bg-white/20 rounded-full transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                          href={`/tags/${encodeURIComponent(tag)}`}
+                        >
+                          {tag}
+                        </a>
+                      </li>
+                    ))
+                  ) : (
+                    <li class="text-sm text-white/70">
+                      <a class="font-semibold text-white underline" href="/tags">
+                        View all topics
                       </a>
                     </li>
-                  ))
-                ) : (
-                  <li class="text-sm text-[var(--color-ink-muted)]">
-                    Topics load from your posts.{" "}
-                    <a class="font-semibold text-[var(--color-accent)] underline" href="/tags">
-                      View all topics
-                    </a>
-                  </li>
-                )
-              }
-            </ul>
-          </nav>
+                  )
+                }
+              </ul>
+            </nav>
+          </div>
         </div>
 
-        <div class="mt-12 sm:mt-14 lg:mt-16 grid grid-cols-1 lg:grid-cols-2 gap-x-10 lg:gap-x-12 gap-y-16 sm:gap-y-20 lg:gap-y-24">
-          {
-            sortedPosts.map((post) => (
-              <BlogEntries
-                url={"/posts/" + post.id}
-                tags={post.data.tags}
-                title={post.data.title}
-                author={post.data.author}
-                image={post.data.image.url}
-                description={post.data.description}
-                pubDate={post.data.pubDate.toString().slice(0, 10)}
-              />
-            ))
-          }
+        <!-- Blog entries on light background -->
+        <div class="bg-[var(--color-surface-2)] px-6 sm:px-8 lg:px-12 xl:px-14 py-10 sm:py-12 lg:py-14">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-10 lg:gap-x-12 gap-y-16 sm:gap-y-20 lg:gap-y-24">
+            {
+              sortedPosts.map((post) => (
+                <BlogEntries
+                  url={"/posts/" + post.id}
+                  tags={post.data.tags}
+                  title={post.data.title}
+                  author={post.data.author}
+                  image={post.data.image.url}
+                  description={post.data.description}
+                  pubDate={post.data.pubDate.toString().slice(0, 10)}
+                />
+              ))
+            }
+          </div>
         </div>
+
       </div>
     </section>
 
