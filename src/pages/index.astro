@@ -14,25 +14,75 @@ const sortedPosts = allPosts.sort(
 
 const services = [
   {
-    title: "Dry cleaning",
-    body: "Solvent care for suits, dresses, coats, and delicates—inspected, finished, and bagged with care.",
+    title: "Dry Cleaning",
+    body: "We treat every garment like it's our own. Suits, dresses, coats, and delicates—carefully inspected, beautifully finished, and returned ready to wear.",
+    image: "/media/post-suits.jpg",
+    imageAlt: "Well-pressed suit jacket on a hanger",
+    price: "From $8",
   },
   {
-    title: "Shirt laundry",
-    body: "Pressed shirts with starch levels to match your dress code—hospitality, office, or boardroom.",
+    title: "Shirt Laundry",
+    body: "Crisp, perfectly pressed shirts with your preferred starch level. Whether it's for the office or a big occasion, we'll have you looking sharp.",
+    image: "/media/post-shirts.jpg",
+    imageAlt: "Neatly pressed dress shirts on hangers",
+    price: "From $4",
   },
   {
     title: "Alterations",
-    body: "Hemming, tapering, and repairs so off-the-rack fits like it was made for you.",
+    body: "Our seamstress has over 30 years of experience hemming, tapering, and repairing. Off-the-rack will fit like it was made just for you.",
+    image: "/media/post-fabrics.jpg",
+    imageAlt: "Delicate fabric and fine garment details",
+    price: "From $12",
   },
   {
-    title: "Stain treatment",
-    body: "Oil, wine, ink, and everyday spills—tell us the story; we pick the safest chemistry.",
+    title: "Stain Treatment",
+    body: "Oil, wine, ink, grass—we've seen it all and treated it all. Bring it in early and let us work our magic before the stain sets.",
+    image: "/media/post-laundry.jpg",
+    imageAlt: "Clean white laundry and fresh garments",
+    price: "Complimentary",
+  },
+];
+
+const steps = [
+  {
+    number: "01",
+    title: "Drop off",
+    body: "Stop by our shop any time during business hours. No appointment needed—we'll greet you by name if you're a regular.",
+  },
+  {
+    number: "02",
+    title: "We get to work",
+    body: "Your garments are inspected, tagged, and carefully cleaned by hand using the right process for each fabric. No shortcuts.",
+  },
+  {
+    number: "03",
+    title: "Pick up ready-to-wear",
+    body: "Most orders are ready within the week, often sooner. We'll call you when they're done. Every piece pressed, bagged, and ready.",
+  },
+];
+
+const testimonials = [
+  {
+    quote: "I've been bringing my suits here for 12 years. They know my name, they remember my starch preference, and they've never let me down. This is what a real neighborhood business should be.",
+    name: "Robert M.",
+    since: "Customer since 2012",
+  },
+  {
+    quote: "They saved my wedding dress from a stubborn red wine stain from the reception. I cried happy tears when I picked it up. These people genuinely care about your clothes.",
+    name: "Jennifer K.",
+    since: "Customer since 2019",
+  },
+  {
+    quote: "Same-day rush service when I needed it for a job interview. They stayed a little late just to get it done. You don't find that kind of dedication at a chain cleaner.",
+    name: "David L.",
+    since: "Customer since 2021",
   },
 ];
 ---
 
 <BaseLayout title={defaultSeo.title} description={defaultSeo.description}>
+
+  <!-- Hero -->
   <section class="relative min-h-[min(88vh,920px)] flex flex-col justify-end">
     <div class="absolute inset-0">
       <img
@@ -53,16 +103,22 @@ const services = [
     <div
       class="relative max-w-[1600px] w-full mx-auto px-5 sm:px-8 lg:px-12 xl:px-16 pb-16 sm:pb-20 lg:pb-28 pt-32"
     >
+      <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/25 rounded-full px-4 py-1.5 mb-6">
+        <svg class="w-3.5 h-3.5 text-white/80" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+          <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"/>
+        </svg>
+        <span class="text-xs font-semibold text-white/90 uppercase tracking-widest">Family-owned · Est. 1987</span>
+      </div>
       <p class="text-xs font-semibold uppercase tracking-[0.25em] text-white/70">
         {SITE.tagline}
       </p>
       <h1
         class="mt-5 max-w-4xl font-display text-4xl sm:text-5xl lg:text-6xl lg:leading-[1.05] text-white text-balance"
       >
-        Garment care with the finish your calendar expects.
+        Your neighborhood cleaners—where your clothes are treated like family.
       </h1>
       <p class="mt-6 max-w-2xl text-lg text-white/85 leading-relaxed">
-        {SITE.name} serves working professionals and families who want reliable turnaround, clear communication, and clothes that return ready to wear—not “almost.”
+        For over 35 years, we've been caring for Springfield's finest garments. We know your name, remember your preferences, and take genuine pride in every single piece we touch.
       </p>
       <div class="mt-10 flex flex-wrap gap-4">
         <a
@@ -72,37 +128,141 @@ const services = [
           Schedule a drop-off
         </a>
         <a
-          href="/#journal"
+          href="/#services"
           class="inline-flex items-center justify-center min-h-12 px-8 text-sm font-medium text-white border border-white/40 hover:bg-white/10 rounded-sm transition-colors"
         >
-          Read the journal
+          See our services
         </a>
       </div>
     </div>
   </section>
 
+  <!-- Trust stats bar -->
+  <div class="border-b border-[var(--color-border)] bg-[var(--color-surface-2)]">
+    <div class="max-w-[1600px] mx-auto px-5 sm:px-8 lg:px-12 xl:px-16 py-10">
+      <dl class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+        <div>
+          <dt class="text-sm text-[var(--color-ink-muted)]">Years in business</dt>
+          <dd class="mt-1 font-display text-4xl text-[var(--color-accent)]">35+</dd>
+        </div>
+        <div>
+          <dt class="text-sm text-[var(--color-ink-muted)]">Happy customers</dt>
+          <dd class="mt-1 font-display text-4xl text-[var(--color-accent)]">5,000+</dd>
+        </div>
+        <div>
+          <dt class="text-sm text-[var(--color-ink-muted)]">Typical turnaround</dt>
+          <dd class="mt-1 font-display text-4xl text-[var(--color-accent)]">3–5 days</dd>
+        </div>
+        <div>
+          <dt class="text-sm text-[var(--color-ink-muted)]">Satisfaction guarantee</dt>
+          <dd class="mt-1 font-display text-4xl text-[var(--color-accent)]">100%</dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+
   <div class="max-w-[1600px] mx-auto px-5 sm:px-8 lg:px-12 xl:px-16">
+
+    <!-- Services -->
     <section id="services" class="py-20 lg:py-28 scroll-mt-24 border-b border-[var(--color-border)]">
       <div class="lg:flex lg:items-end lg:justify-between gap-12">
         <div class="max-w-xl">
-          <h2 class="font-display text-3xl sm:text-4xl text-[var(--color-ink)]">What we do</h2>
+          <p class="text-xs font-bold uppercase tracking-[0.2em] text-[var(--color-accent)]">Our Services</p>
+          <h2 class="mt-2 font-display text-3xl sm:text-4xl text-[var(--color-ink)]">Everything your wardrobe needs, under one roof</h2>
           <p class="mt-4 text-[var(--color-ink-muted)] leading-relaxed">
-            One counter for cleaning, finishing, and alterations—so you are not bouncing between shops.
+            From everyday dress shirts to your most treasured garments—we handle it all with the same personal care and attention to detail.
           </p>
         </div>
+        <a
+          href={SITE.phoneHref}
+          class="hidden lg:inline-flex items-center justify-center min-h-11 px-6 text-sm font-medium text-[var(--color-accent)] border border-[var(--color-accent)]/40 hover:bg-[var(--color-accent)]/5 rounded-sm transition-colors shrink-0"
+        >
+          Call to ask about pricing
+        </a>
       </div>
-      <ul class="mt-14 grid gap-px bg-[var(--color-border)] sm:grid-cols-2 lg:grid-cols-4 border border-[var(--color-border)] rounded-sm overflow-hidden">
+
+      <ul class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {
           services.map((s) => (
-            <li class="bg-[var(--color-surface)] p-8 lg:p-10">
-              <h3 class="font-display text-xl text-[var(--color-ink)]">{s.title}</h3>
-              <p class="mt-3 text-sm text-[var(--color-ink-muted)] leading-relaxed">{s.body}</p>
+            <li class="flex flex-col bg-[var(--color-surface)] border border-[var(--color-border)] rounded-lg overflow-hidden group hover:shadow-md transition-shadow duration-300">
+              <div class="overflow-hidden">
+                <img
+                  src={s.image}
+                  alt={s.imageAlt}
+                  width={600}
+                  height={400}
+                  loading="lazy"
+                  decoding="async"
+                  class="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                />
+              </div>
+              <div class="flex flex-col flex-1 p-6">
+                <div class="flex items-start justify-between gap-3 mb-3">
+                  <h3 class="font-display text-xl text-[var(--color-ink)]">{s.title}</h3>
+                  <span class="shrink-0 text-xs font-semibold text-[var(--color-accent)] bg-[var(--color-accent)]/8 px-2.5 py-1 rounded-full whitespace-nowrap">{s.price}</span>
+                </div>
+                <p class="text-sm text-[var(--color-ink-muted)] leading-relaxed">{s.body}</p>
+              </div>
             </li>
           ))
         }
       </ul>
     </section>
 
+    <!-- How it works -->
+    <section class="py-20 lg:py-28 border-b border-[var(--color-border)]">
+      <div class="max-w-xl mb-14">
+        <p class="text-xs font-bold uppercase tracking-[0.2em] text-[var(--color-accent)]">Simple process</p>
+        <h2 class="mt-2 font-display text-3xl sm:text-4xl text-[var(--color-ink)]">As easy as 1, 2, 3</h2>
+        <p class="mt-4 text-[var(--color-ink-muted)] leading-relaxed">
+          No apps, no subscriptions, no hassle. Just friendly service the way it should be.
+        </p>
+      </div>
+      <div class="grid gap-8 sm:grid-cols-3">
+        {
+          steps.map((step) => (
+            <div class="relative pl-0 sm:pl-0">
+              <div class="flex items-center gap-5 sm:block">
+                <div class="shrink-0 font-display text-5xl sm:text-6xl text-[var(--color-accent)]/20 sm:mb-5 leading-none">{step.number}</div>
+                <div>
+                  <h3 class="font-display text-xl text-[var(--color-ink)]">{step.title}</h3>
+                  <p class="mt-2 text-sm text-[var(--color-ink-muted)] leading-relaxed">{step.body}</p>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 lg:py-28 border-b border-[var(--color-border)]">
+      <div class="max-w-xl mb-14">
+        <p class="text-xs font-bold uppercase tracking-[0.2em] text-[var(--color-accent)]">What our neighbors say</p>
+        <h2 class="mt-2 font-display text-3xl sm:text-4xl text-[var(--color-ink)]">Stories from our community</h2>
+        <p class="mt-4 text-[var(--color-ink-muted)] leading-relaxed">
+          We've been part of Springfield's fabric for 35 years. These are a few of the people who keep us going.
+        </p>
+      </div>
+      <div class="grid gap-6 sm:grid-cols-3">
+        {
+          testimonials.map((t) => (
+            <blockquote class="flex flex-col bg-[var(--color-surface-2)] border border-[var(--color-border)] rounded-lg p-8">
+              <svg class="w-8 h-8 text-[var(--color-accent)]/40 mb-4 shrink-0" fill="currentColor" viewBox="0 0 32 32" aria-hidden="true">
+                <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z"/>
+              </svg>
+              <p class="flex-1 text-[var(--color-ink-muted)] leading-relaxed text-base">{t.quote}</p>
+              <footer class="mt-6 pt-5 border-t border-[var(--color-border)]">
+                <p class="font-semibold text-[var(--color-ink)] text-sm">{t.name}</p>
+                <p class="text-xs text-[var(--color-ink-faint)] mt-0.5">{t.since}</p>
+              </footer>
+            </blockquote>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- Journal -->
     <section
       id="journal"
       class="scroll-mt-24 py-12 sm:py-16 lg:py-20"
@@ -123,7 +283,7 @@ const services = [
               Journal
             </h2>
             <p class="mt-4 text-[var(--color-ink-muted)] leading-relaxed text-base sm:text-[1.05rem]">
-              Practical notes on fabrics, stains, and storage—so your pieces last between visits.
+              Practical notes on fabrics, stains, and storage—so your pieces last longer between visits.
             </p>
           </div>
           <nav

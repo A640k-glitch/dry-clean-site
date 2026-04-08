@@ -7,14 +7,14 @@
   --font-display: "Cabinet Grotesk", system-ui, sans-serif;
   --font-mono: ui-monospace, monospace;
 
-  --color-surface: oklch(99.2% 0.004 95);
-  --color-surface-2: oklch(97.5% 0.006 95);
-  --color-border: oklch(90% 0.01 95);
-  --color-ink: oklch(18% 0.02 270);
-  --color-ink-muted: oklch(42% 0.02 270);
-  --color-ink-faint: oklch(58% 0.02 270);
-  --color-accent: oklch(38% 0.06 260);
-  --color-accent-hover: oklch(32% 0.07 260);
+  --color-surface: oklch(99.2% 0.006 90);
+  --color-surface-2: oklch(97.5% 0.008 90);
+  --color-border: oklch(90% 0.012 90);
+  --color-ink: oklch(18% 0.02 200);
+  --color-ink-muted: oklch(42% 0.02 200);
+  --color-ink-faint: oklch(58% 0.02 200);
+  --color-accent: oklch(45% 0.11 185);
+  --color-accent-hover: oklch(39% 0.13 185);
 
   --color-base-50: oklch(98% 0.004 95);
   --color-base-100: oklch(96% 0.006 95);
