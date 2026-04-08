@@ -2,18 +2,13 @@
 import { SITE } from "@/config/site";
 ---
 
-<header
-  class="sticky top-0 z-50 border-b border-[var(--color-border)] bg-[var(--color-surface)]/85 backdrop-blur-md"
->
+<header class="sticky top-0 z-50 border-b-2 border-[var(--color-accent)] bg-white shadow-sm">
   <div
-    class="max-w-[1600px] mx-auto px-5 sm:px-8 lg:px-12 xl:px-16 flex items-center justify-between gap-6 py-4 lg:py-5"
+    class="max-w-[1600px] mx-auto px-5 sm:px-8 lg:px-12 xl:px-16 flex items-center justify-between gap-6 py-3.5 lg:py-4"
   >
-    <a
-      href="/"
-      class="flex items-baseline gap-3 hover:opacity-80 transition-opacity"
-    >
-      <span class="font-display text-xl sm:text-2xl tracking-tight text-[var(--color-ink)]">{SITE.name}</span>
-      <span class="hidden sm:inline text-xs font-medium text-[var(--color-ink-faint)] tracking-wide">Est. 1987</span>
+    <a href="/" class="flex items-baseline gap-3 hover:opacity-85 transition-opacity">
+      <span class="font-display text-xl sm:text-2xl tracking-tight text-[var(--color-accent)]">{SITE.name}</span>
+      <span class="hidden sm:inline text-xs font-semibold text-[var(--color-warm)] uppercase tracking-widest">Est. 1987</span>
     </a>
 
     <details class="group relative md:hidden">
@@ -30,24 +25,28 @@ import { SITE } from "@/config/site";
         </svg>
       </summary>
       <nav
-        class="absolute right-0 top-full mt-2 min-w-[12rem] rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] py-2 shadow-lg"
+        class="absolute right-0 top-full mt-2 min-w-[14rem] rounded-xl border-2 border-[var(--color-accent)]/20 bg-white py-2 shadow-xl"
         aria-label="Mobile"
       >
-        <a class="block min-h-11 px-4 py-3 text-sm font-medium text-[var(--color-ink-muted)] hover:bg-[var(--color-surface-2)] active:bg-[var(--color-surface-2)]" href="/#services">Services</a>
-        <a class="block min-h-11 px-4 py-3 text-sm font-medium text-[var(--color-ink-muted)] hover:bg-[var(--color-surface-2)] active:bg-[var(--color-surface-2)]" href="/#journal">Journal</a>
-        <a class="block min-h-11 px-4 py-3 text-sm font-medium text-[var(--color-ink-muted)] hover:bg-[var(--color-surface-2)] active:bg-[var(--color-surface-2)]" href="/#visit">Visit</a>
-        <a class="block min-h-11 px-4 py-3 text-sm font-semibold text-[var(--color-accent)]" href={SITE.phoneHref}>Call</a>
+        <a class="block min-h-11 px-5 py-3 text-sm font-semibold text-[var(--color-ink)] hover:bg-[var(--color-accent-light)] hover:text-[var(--color-accent)] transition-colors" href="/#services">Services</a>
+        <a class="block min-h-11 px-5 py-3 text-sm font-semibold text-[var(--color-ink)] hover:bg-[var(--color-accent-light)] hover:text-[var(--color-accent)] transition-colors" href="/#journal">The Clothesline</a>
+        <a class="block min-h-11 px-5 py-3 text-sm font-semibold text-[var(--color-ink)] hover:bg-[var(--color-accent-light)] hover:text-[var(--color-accent)] transition-colors" href="/#visit">Visit Us</a>
+        <div class="mx-3 my-2 border-t border-[var(--color-border)]"></div>
+        <a class="block min-h-11 px-5 py-3 text-sm font-bold text-white bg-[var(--color-accent)] mx-3 mb-1 rounded-lg text-center" href={SITE.phoneHref}>Call {SITE.phone}</a>
       </nav>
     </details>
 
-    <nav class="hidden md:flex items-center gap-8 lg:gap-10" aria-label="Primary">
-      <a class="text-sm text-[var(--color-ink-muted)] hover:text-[var(--color-ink)] transition-colors" href="/#services">Services</a>
-      <a class="text-sm text-[var(--color-ink-muted)] hover:text-[var(--color-ink)] transition-colors" href="/#journal">Journal</a>
-      <a class="text-sm text-[var(--color-ink-muted)] hover:text-[var(--color-ink)] transition-colors" href="/#visit">Visit</a>
+    <nav class="hidden md:flex items-center gap-1 lg:gap-2" aria-label="Primary">
+      <a class="px-4 py-2 text-sm font-semibold text-[var(--color-ink-muted)] hover:text-[var(--color-accent)] hover:bg-[var(--color-accent-light)] rounded-lg transition-colors" href="/#services">Services</a>
+      <a class="px-4 py-2 text-sm font-semibold text-[var(--color-ink-muted)] hover:text-[var(--color-accent)] hover:bg-[var(--color-accent-light)] rounded-lg transition-colors" href="/#journal">The Clothesline</a>
+      <a class="px-4 py-2 text-sm font-semibold text-[var(--color-ink-muted)] hover:text-[var(--color-accent)] hover:bg-[var(--color-accent-light)] rounded-lg transition-colors" href="/#visit">Visit Us</a>
       <a
         href={SITE.phoneHref}
-        class="text-sm font-medium text-white bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] px-5 py-2.5 rounded-full transition-colors"
+        class="ml-3 inline-flex items-center gap-2 text-sm font-bold text-white bg-[var(--color-accent)] hover:bg-[var(--color-accent-hover)] px-5 py-2.5 rounded-full transition-colors shadow-sm"
       >
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+        </svg>
         {SITE.phone}
       </a>
     </nav>

@@ -19,6 +19,8 @@ const services = [
     image: "/media/post-suits.jpg",
     imageAlt: "Well-pressed suit jacket on a hanger",
     price: "From $8",
+    accent: "oklch(50% 0.15 185)",       // teal
+    accentLight: "oklch(94% 0.07 185)",
   },
   {
     title: "Shirt Laundry",
@@ -26,6 +28,8 @@ const services = [
     image: "/media/post-shirts.jpg",
     imageAlt: "Neatly pressed dress shirts on hangers",
     price: "From $4",
+    accent: "oklch(68% 0.17 76)",        // amber
+    accentLight: "oklch(93% 0.09 78)",
   },
   {
     title: "Alterations",
@@ -33,6 +37,8 @@ const services = [
     image: "/media/post-fabrics.jpg",
     imageAlt: "Delicate fabric and fine garment details",
     price: "From $12",
+    accent: "oklch(60% 0.19 22)",        // coral
+    accentLight: "oklch(95% 0.06 22)",
   },
   {
     title: "Stain Treatment",
@@ -40,24 +46,32 @@ const services = [
     image: "/media/post-laundry.jpg",
     imageAlt: "Clean white laundry and fresh garments",
     price: "Complimentary",
+    accent: "oklch(50% 0.15 185)",       // teal
+    accentLight: "oklch(94% 0.07 185)",
   },
 ];
 
 const steps = [
   {
-    number: "01",
+    number: "1",
     title: "Drop off",
-    body: "Stop by our shop any time during business hours. No appointment needed—we'll greet you by name if you're a regular.",
+    body: "Stop by any time during business hours. No appointment needed—we'll greet you by name if you're a regular.",
+    accent: "oklch(50% 0.15 185)",
+    accentLight: "oklch(94% 0.07 185)",
   },
   {
-    number: "02",
+    number: "2",
     title: "We get to work",
-    body: "Your garments are inspected, tagged, and carefully cleaned by hand using the right process for each fabric. No shortcuts.",
+    body: "Your garments are inspected, tagged, and carefully cleaned using the right process for each fabric. No shortcuts, ever.",
+    accent: "oklch(68% 0.17 76)",
+    accentLight: "oklch(93% 0.09 78)",
   },
   {
-    number: "03",
+    number: "3",
     title: "Pick up ready-to-wear",
-    body: "Most orders are ready within the week, often sooner. We'll call you when they're done. Every piece pressed, bagged, and ready.",
+    body: "Most orders are ready within the week, often sooner. We'll call you when done. Every piece pressed, bagged, and ready.",
+    accent: "oklch(60% 0.19 22)",
+    accentLight: "oklch(95% 0.06 22)",
   },
 ];
 
@@ -66,23 +80,32 @@ const testimonials = [
     quote: "I've been bringing my suits here for 12 years. They know my name, they remember my starch preference, and they've never let me down. This is what a real neighborhood business should be.",
     name: "Robert M.",
     since: "Customer since 2012",
+    bg: "oklch(94% 0.07 185)",
+    border: "oklch(82% 0.1 185)",
+    quoteColor: "oklch(50% 0.15 185)",
   },
   {
     quote: "They saved my wedding dress from a stubborn red wine stain from the reception. I cried happy tears when I picked it up. These people genuinely care about your clothes.",
     name: "Jennifer K.",
     since: "Customer since 2019",
+    bg: "oklch(93% 0.09 78)",
+    border: "oklch(84% 0.11 78)",
+    quoteColor: "oklch(68% 0.17 76)",
   },
   {
     quote: "Same-day rush service when I needed it for a job interview. They stayed a little late just to get it done. You don't find that kind of dedication at a chain cleaner.",
     name: "David L.",
     since: "Customer since 2021",
+    bg: "oklch(95% 0.06 22)",
+    border: "oklch(86% 0.09 22)",
+    quoteColor: "oklch(60% 0.19 22)",
   },
 ];
 ---
 
 <BaseLayout title={defaultSeo.title} description={defaultSeo.description}>
 
-  <!-- Hero -->
+  <!-- ─── Hero ─────────────────────────────────────────────── -->
   <section class="relative min-h-[min(88vh,920px)] flex flex-col justify-end">
     <div class="absolute inset-0">
       <img
@@ -95,26 +118,21 @@ const testimonials = [
         class="w-full h-full object-cover"
       />
       <div
-        class="absolute inset-0 bg-gradient-to-t from-[var(--color-ink)]/92 via-[var(--color-ink)]/50 to-transparent"
+        class="absolute inset-0"
+        style="background: linear-gradient(to top, oklch(17% 0.03 195 / 94%) 0%, oklch(17% 0.03 195 / 55%) 45%, transparent 100%);"
         aria-hidden="true"
       />
     </div>
 
-    <div
-      class="relative max-w-[1600px] w-full mx-auto px-5 sm:px-8 lg:px-12 xl:px-16 pb-16 sm:pb-20 lg:pb-28 pt-32"
-    >
-      <div class="inline-flex items-center gap-2 bg-white/15 backdrop-blur-sm border border-white/25 rounded-full px-4 py-1.5 mb-6">
-        <svg class="w-3.5 h-3.5 text-white/80" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-          <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"/>
+    <div class="relative max-w-[1600px] w-full mx-auto px-5 sm:px-8 lg:px-12 xl:px-16 pb-16 sm:pb-20 lg:pb-28 pt-32">
+      <div class="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-6 backdrop-blur-sm" style="background: oklch(50% 0.15 185 / 0.35); border: 1px solid oklch(50% 0.15 185 / 0.4);">
+        <svg class="w-3.5 h-3.5 text-white/90" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+          <path fill-rule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clip-rule="evenodd"/>
         </svg>
-        <span class="text-xs font-semibold text-white/90 uppercase tracking-widest">Family-owned · Est. 1987</span>
+        <span class="text-xs font-bold text-white uppercase tracking-widest">Family-owned · Est. 1987 · Springfield's own</span>
       </div>
-      <p class="text-xs font-semibold uppercase tracking-[0.25em] text-white/70">
-        {SITE.tagline}
-      </p>
-      <h1
-        class="mt-5 max-w-4xl font-display text-4xl sm:text-5xl lg:text-6xl lg:leading-[1.05] text-white text-balance"
-      >
+      <p class="text-xs font-bold uppercase tracking-[0.25em] text-white/60">{SITE.tagline}</p>
+      <h1 class="mt-4 max-w-4xl font-display text-4xl sm:text-5xl lg:text-6xl lg:leading-[1.05] text-white text-balance">
         Your neighborhood cleaners—where your clothes are treated like family.
       </h1>
       <p class="mt-6 max-w-2xl text-lg text-white/85 leading-relaxed">
@@ -123,13 +141,17 @@ const testimonials = [
       <div class="mt-10 flex flex-wrap gap-4">
         <a
           href={SITE.phoneHref}
-          class="inline-flex items-center justify-center min-h-12 px-8 text-sm font-semibold bg-white text-[var(--color-ink)] hover:bg-white/90 rounded-sm transition-colors"
+          class="inline-flex items-center justify-center gap-2 min-h-12 px-8 text-sm font-bold bg-white rounded-full transition-colors shadow-lg"
+          style="color: var(--color-accent);"
         >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+          </svg>
           Schedule a drop-off
         </a>
         <a
           href="/#services"
-          class="inline-flex items-center justify-center min-h-12 px-8 text-sm font-medium text-white border border-white/40 hover:bg-white/10 rounded-sm transition-colors"
+          class="inline-flex items-center justify-center min-h-12 px-8 text-sm font-semibold text-white border-2 border-white/40 hover:bg-white/10 rounded-full transition-colors"
         >
           See our services
         </a>
@@ -137,25 +159,25 @@ const testimonials = [
     </div>
   </section>
 
-  <!-- Trust stats bar -->
-  <div class="border-b border-[var(--color-border)] bg-[var(--color-surface-2)]">
+  <!-- ─── Trust stats bar ──────────────────────────────────── -->
+  <div style="background-color: var(--color-warm-light); border-bottom: 2px solid var(--color-warm-border);">
     <div class="max-w-[1600px] mx-auto px-5 sm:px-8 lg:px-12 xl:px-16 py-10">
       <dl class="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
         <div>
-          <dt class="text-sm text-[var(--color-ink-muted)]">Years in business</dt>
-          <dd class="mt-1 font-display text-4xl text-[var(--color-accent)]">35+</dd>
+          <dd class="font-display text-5xl" style="color: var(--color-warm);">35+</dd>
+          <dt class="mt-1 text-sm font-semibold" style="color: var(--color-ink-muted);">Years in business</dt>
         </div>
         <div>
-          <dt class="text-sm text-[var(--color-ink-muted)]">Happy customers</dt>
-          <dd class="mt-1 font-display text-4xl text-[var(--color-accent)]">5,000+</dd>
+          <dd class="font-display text-5xl" style="color: var(--color-accent);">5,000+</dd>
+          <dt class="mt-1 text-sm font-semibold" style="color: var(--color-ink-muted);">Happy customers</dt>
         </div>
         <div>
-          <dt class="text-sm text-[var(--color-ink-muted)]">Typical turnaround</dt>
-          <dd class="mt-1 font-display text-4xl text-[var(--color-accent)]">3–5 days</dd>
+          <dd class="font-display text-5xl" style="color: var(--color-coral);">3–5</dd>
+          <dt class="mt-1 text-sm font-semibold" style="color: var(--color-ink-muted);">Day turnaround</dt>
         </div>
         <div>
-          <dt class="text-sm text-[var(--color-ink-muted)]">Satisfaction guarantee</dt>
-          <dd class="mt-1 font-display text-4xl text-[var(--color-accent)]">100%</dd>
+          <dd class="font-display text-5xl" style="color: var(--color-warm);">100%</dd>
+          <dt class="mt-1 text-sm font-semibold" style="color: var(--color-ink-muted);">Satisfaction guaranteed</dt>
         </div>
       </dl>
     </div>
@@ -163,28 +185,34 @@ const testimonials = [
 
   <div class="max-w-[1600px] mx-auto px-5 sm:px-8 lg:px-12 xl:px-16">
 
-    <!-- Services -->
-    <section id="services" class="py-20 lg:py-28 scroll-mt-24 border-b border-[var(--color-border)]">
-      <div class="lg:flex lg:items-end lg:justify-between gap-12">
+    <!-- ─── Services ─────────────────────────────────────────── -->
+    <section id="services" class="py-20 lg:py-28 scroll-mt-24">
+      <div class="lg:flex lg:items-end lg:justify-between gap-12 mb-14">
         <div class="max-w-xl">
-          <p class="text-xs font-bold uppercase tracking-[0.2em] text-[var(--color-accent)]">Our Services</p>
-          <h2 class="mt-2 font-display text-3xl sm:text-4xl text-[var(--color-ink)]">Everything your wardrobe needs, under one roof</h2>
-          <p class="mt-4 text-[var(--color-ink-muted)] leading-relaxed">
-            From everyday dress shirts to your most treasured garments—we handle it all with the same personal care and attention to detail.
+          <div class="inline-flex items-center gap-2 rounded-full px-3 py-1 mb-4" style="background-color: var(--color-accent-light);">
+            <span class="text-xs font-bold uppercase tracking-widest" style="color: var(--color-accent);">Our Services</span>
+          </div>
+          <h2 class="font-display text-3xl sm:text-4xl" style="color: var(--color-ink);">Everything your wardrobe needs, under one roof</h2>
+          <p class="mt-4 leading-relaxed" style="color: var(--color-ink-muted);">
+            From everyday dress shirts to your most treasured garments—handled with the same personal care and attention to detail.
           </p>
         </div>
         <a
           href={SITE.phoneHref}
-          class="hidden lg:inline-flex items-center justify-center min-h-11 px-6 text-sm font-medium text-[var(--color-accent)] border border-[var(--color-accent)]/40 hover:bg-[var(--color-accent)]/5 rounded-sm transition-colors shrink-0"
+          class="hidden lg:inline-flex items-center justify-center min-h-11 px-6 text-sm font-bold rounded-full transition-colors shrink-0 border-2"
+          style="color: var(--color-accent); border-color: var(--color-accent); background: var(--color-accent-light);"
         >
           Call to ask about pricing
         </a>
       </div>
 
-      <ul class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <ul class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {
           services.map((s) => (
-            <li class="flex flex-col bg-[var(--color-surface)] border border-[var(--color-border)] rounded-lg overflow-hidden group hover:shadow-md transition-shadow duration-300">
+            <li
+              class="flex flex-col rounded-2xl overflow-hidden group hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2"
+              style={`background: white; border-color: ${s.accentLight}; border-top: 4px solid ${s.accent};`}
+            >
               <div class="overflow-hidden">
                 <img
                   src={s.image}
@@ -193,15 +221,18 @@ const testimonials = [
                   height={400}
                   loading="lazy"
                   decoding="async"
-                  class="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-[1.04]"
+                  class="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-[1.05]"
                 />
               </div>
               <div class="flex flex-col flex-1 p-6">
                 <div class="flex items-start justify-between gap-3 mb-3">
-                  <h3 class="font-display text-xl text-[var(--color-ink)]">{s.title}</h3>
-                  <span class="shrink-0 text-xs font-semibold text-[var(--color-accent)] bg-[var(--color-accent)]/8 px-2.5 py-1 rounded-full whitespace-nowrap">{s.price}</span>
+                  <h3 class="font-display text-xl" style="color: var(--color-ink);">{s.title}</h3>
+                  <span
+                    class="shrink-0 text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap"
+                    style={`color: ${s.accent}; background-color: ${s.accentLight};`}
+                  >{s.price}</span>
                 </div>
-                <p class="text-sm text-[var(--color-ink-muted)] leading-relaxed">{s.body}</p>
+                <p class="text-sm leading-relaxed" style="color: var(--color-ink-muted);">{s.body}</p>
               </div>
             </li>
           ))
@@ -209,52 +240,76 @@ const testimonials = [
       </ul>
     </section>
 
-    <!-- How it works -->
-    <section class="py-20 lg:py-28 border-b border-[var(--color-border)]">
+    <!-- ─── How it works ─────────────────────────────────────── -->
+  </div>
+
+  <!-- Full-bleed warm amber background section -->
+  <div style="background-color: var(--color-warm-light); border-top: 2px solid var(--color-warm-border); border-bottom: 2px solid var(--color-warm-border);">
+    <div class="max-w-[1600px] mx-auto px-5 sm:px-8 lg:px-12 xl:px-16 py-20 lg:py-28">
       <div class="max-w-xl mb-14">
-        <p class="text-xs font-bold uppercase tracking-[0.2em] text-[var(--color-accent)]">Simple process</p>
-        <h2 class="mt-2 font-display text-3xl sm:text-4xl text-[var(--color-ink)]">As easy as 1, 2, 3</h2>
-        <p class="mt-4 text-[var(--color-ink-muted)] leading-relaxed">
+        <div class="inline-flex items-center gap-2 rounded-full px-3 py-1 mb-4" style="background-color: var(--color-warm); ">
+          <span class="text-xs font-bold uppercase tracking-widest text-white">Simple process</span>
+        </div>
+        <h2 class="font-display text-3xl sm:text-4xl" style="color: var(--color-ink);">As easy as 1, 2, 3</h2>
+        <p class="mt-4 leading-relaxed" style="color: var(--color-ink-muted);">
           No apps, no subscriptions, no hassle. Just friendly service the way it should be.
         </p>
       </div>
       <div class="grid gap-8 sm:grid-cols-3">
         {
           steps.map((step) => (
-            <div class="relative pl-0 sm:pl-0">
-              <div class="flex items-center gap-5 sm:block">
-                <div class="shrink-0 font-display text-5xl sm:text-6xl text-[var(--color-accent)]/20 sm:mb-5 leading-none">{step.number}</div>
-                <div>
-                  <h3 class="font-display text-xl text-[var(--color-ink)]">{step.title}</h3>
-                  <p class="mt-2 text-sm text-[var(--color-ink-muted)] leading-relaxed">{step.body}</p>
-                </div>
+            <div
+              class="rounded-2xl p-8 border-2"
+              style={`background: white; border-color: ${step.accentLight};`}
+            >
+              <div
+                class="w-14 h-14 rounded-full flex items-center justify-center mb-6 shadow-md"
+                style={`background-color: ${step.accent};`}
+              >
+                <span class="font-display text-2xl font-bold text-white">{step.number}</span>
               </div>
+              <h3 class="font-display text-xl mb-2" style="color: var(--color-ink);">{step.title}</h3>
+              <p class="text-sm leading-relaxed" style="color: var(--color-ink-muted);">{step.body}</p>
             </div>
           ))
         }
       </div>
-    </section>
+    </div>
+  </div>
 
-    <!-- Testimonials -->
-    <section class="py-20 lg:py-28 border-b border-[var(--color-border)]">
+  <div class="max-w-[1600px] mx-auto px-5 sm:px-8 lg:px-12 xl:px-16">
+
+    <!-- ─── Testimonials ──────────────────────────────────────── -->
+    <section class="py-20 lg:py-28">
       <div class="max-w-xl mb-14">
-        <p class="text-xs font-bold uppercase tracking-[0.2em] text-[var(--color-accent)]">What our neighbors say</p>
-        <h2 class="mt-2 font-display text-3xl sm:text-4xl text-[var(--color-ink)]">Stories from our community</h2>
-        <p class="mt-4 text-[var(--color-ink-muted)] leading-relaxed">
+        <div class="inline-flex items-center gap-2 rounded-full px-3 py-1 mb-4" style="background-color: var(--color-coral-light); border: 1px solid var(--color-coral-border);">
+          <span class="text-xs font-bold uppercase tracking-widest" style="color: var(--color-coral);">What our neighbors say</span>
+        </div>
+        <h2 class="font-display text-3xl sm:text-4xl" style="color: var(--color-ink);">Stories from our community</h2>
+        <p class="mt-4 leading-relaxed" style="color: var(--color-ink-muted);">
           We've been part of Springfield's fabric for 35 years. These are a few of the people who keep us going.
         </p>
       </div>
       <div class="grid gap-6 sm:grid-cols-3">
         {
           testimonials.map((t) => (
-            <blockquote class="flex flex-col bg-[var(--color-surface-2)] border border-[var(--color-border)] rounded-lg p-8">
-              <svg class="w-8 h-8 text-[var(--color-accent)]/40 mb-4 shrink-0" fill="currentColor" viewBox="0 0 32 32" aria-hidden="true">
+            <blockquote
+              class="flex flex-col rounded-2xl p-8 border-2"
+              style={`background-color: ${t.bg}; border-color: ${t.border};`}
+            >
+              <svg
+                class="w-10 h-10 mb-5 shrink-0 opacity-50"
+                fill="currentColor"
+                viewBox="0 0 32 32"
+                aria-hidden="true"
+                style={`color: ${t.quoteColor};`}
+              >
                 <path d="M9.352 4C4.456 7.456 1 13.12 1 19.36c0 5.088 3.072 8.064 6.624 8.064 3.36 0 5.856-2.688 5.856-5.856 0-3.168-2.208-5.472-5.088-5.472-.576 0-1.344.096-1.536.192.48-3.264 3.552-7.104 6.624-9.024L9.352 4zm16.512 0c-4.8 3.456-8.256 9.12-8.256 15.36 0 5.088 3.072 8.064 6.624 8.064 3.264 0 5.856-2.688 5.856-5.856 0-3.168-2.304-5.472-5.184-5.472-.576 0-1.248.096-1.44.192.48-3.264 3.456-7.104 6.528-9.024L25.864 4z"/>
               </svg>
-              <p class="flex-1 text-[var(--color-ink-muted)] leading-relaxed text-base">{t.quote}</p>
-              <footer class="mt-6 pt-5 border-t border-[var(--color-border)]">
-                <p class="font-semibold text-[var(--color-ink)] text-sm">{t.name}</p>
-                <p class="text-xs text-[var(--color-ink-faint)] mt-0.5">{t.since}</p>
+              <p class="flex-1 leading-relaxed text-base" style="color: var(--color-ink-muted);">{t.quote}</p>
+              <footer class="mt-6 pt-5" style={`border-top: 1px solid ${t.border};`}>
+                <p class="font-bold text-sm" style="color: var(--color-ink);">{t.name}</p>
+                <p class="text-xs mt-0.5" style="color: var(--color-ink-faint);">{t.since}</p>
               </footer>
             </blockquote>
           ))
@@ -262,32 +317,30 @@ const testimonials = [
       </div>
     </section>
 
-    <!-- The Clothesline -->
+    <!-- ─── The Clothesline ───────────────────────────────────── -->
     <section
       id="journal"
-      class="scroll-mt-24 py-12 sm:py-16 lg:py-20"
+      class="scroll-mt-24 pb-12 sm:pb-16 lg:pb-20"
       aria-labelledby="journal-heading"
     >
-      <div class="rounded-lg overflow-hidden shadow-md border border-[var(--color-accent)]/20">
+      <div class="rounded-2xl overflow-hidden shadow-lg" style="border: 2px solid var(--color-accent);">
 
-        <!-- Colorful header band -->
-        <div class="relative bg-[var(--color-accent)] px-6 sm:px-8 lg:px-12 xl:px-14 py-10 sm:py-12 lg:py-14 overflow-hidden">
-          <!-- Dot grid texture -->
+        <!-- Colorful teal header -->
+        <div class="relative overflow-hidden px-6 sm:px-8 lg:px-12 xl:px-14 py-10 sm:py-12 lg:py-14" style="background-color: var(--color-accent);">
           <div
             class="absolute inset-0 opacity-[0.08]"
             style="background-image: radial-gradient(circle, white 1.5px, transparent 1.5px); background-size: 22px 22px;"
             aria-hidden="true"
           ></div>
-          <!-- Decorative large circle -->
           <div
-            class="absolute -right-16 -top-16 w-72 h-72 rounded-full opacity-10"
+            class="absolute -right-20 -top-20 w-80 h-80 rounded-full opacity-10"
             style="background: radial-gradient(circle, white, transparent 70%);"
             aria-hidden="true"
           ></div>
 
           <div class="relative flex flex-col gap-8 xl:flex-row xl:justify-between xl:items-start xl:gap-12">
             <div class="max-w-2xl shrink-0 xl:min-w-0 xl:flex-1">
-              <div class="inline-flex items-center gap-2 bg-white/15 rounded-full px-3 py-1 mb-4">
+              <div class="inline-flex items-center gap-2 rounded-full px-3 py-1 mb-4" style="background: rgba(255,255,255,0.15);">
                 <svg class="w-3.5 h-3.5 text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"/>
                 </svg>
@@ -303,20 +356,15 @@ const testimonials = [
                 Practical notes from 35 years behind the counter—on fabrics, stubborn stains, and keeping your wardrobe in great shape between visits.
               </p>
             </div>
-            <nav
-              class="w-full shrink-0 xl:w-auto xl:max-w-[min(100%,40rem)] xl:pl-4"
-              aria-label="Browse article topics"
-            >
+            <nav class="w-full shrink-0 xl:w-auto xl:max-w-[min(100%,40rem)] xl:pl-4" aria-label="Browse article topics">
               <p class="text-xs font-semibold uppercase tracking-wider text-white/60 mb-3 xl:text-right">Browse by topic</p>
-              <ul
-                class="flex flex-wrap gap-2 justify-start xl:justify-end"
-              >
+              <ul class="flex flex-wrap gap-2 justify-start xl:justify-end">
                 {
                   tags.length > 0 ? (
                     tags.map((tag) => (
                       <li>
                         <a
-                          class="inline-flex min-h-9 items-center px-4 py-1.5 font-bold uppercase tracking-wide text-xs leading-tight text-white border border-white/30 hover:bg-white/20 rounded-full transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                          class="inline-flex min-h-9 items-center px-4 py-1.5 font-bold uppercase tracking-wide text-xs leading-tight text-white border border-white/30 hover:bg-white/20 rounded-full transition-colors"
                           href={`/tags/${encodeURIComponent(tag)}`}
                         >
                           {tag}
@@ -325,9 +373,7 @@ const testimonials = [
                     ))
                   ) : (
                     <li class="text-sm text-white/70">
-                      <a class="font-semibold text-white underline" href="/tags">
-                        View all topics
-                      </a>
+                      <a class="font-semibold text-white underline" href="/tags">View all topics</a>
                     </li>
                   )
                 }
@@ -336,8 +382,8 @@ const testimonials = [
           </div>
         </div>
 
-        <!-- Blog entries on light background -->
-        <div class="bg-[var(--color-surface-2)] px-6 sm:px-8 lg:px-12 xl:px-14 py-10 sm:py-12 lg:py-14">
+        <!-- Blog entries on warm cream background -->
+        <div class="px-6 sm:px-8 lg:px-12 xl:px-14 py-10 sm:py-12 lg:py-14" style="background-color: var(--color-surface-2);">
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-10 lg:gap-x-12 gap-y-16 sm:gap-y-20 lg:gap-y-24">
             {
               sortedPosts.map((post) => (
